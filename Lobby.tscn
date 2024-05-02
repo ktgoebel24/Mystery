@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://cel5dher4nhj8"]
+
+[ext_resource type="PackedScene" uid="uid://vh7pmputa7r3" path="res://player/player.tscn" id="1_qk64j"]
+[ext_resource type="Texture2D" uid="uid://cl7aj12qyspkl" path="res://Untitled_Artwork.png" id="2_0hpoh"]
+[ext_resource type="Texture2D" uid="uid://dw4lqnhgfh8pg" path="res://Floor.png" id="3_krsa8"]
+[ext_resource type="Texture2D" uid="uid://cc8jgatj5utpd" path="res://Door.png" id="4_q7pyo"]
+[ext_resource type="Texture2D" uid="uid://bd77i5gfjdk6n" path="res://Window.png" id="5_eof5v"]
+[ext_resource type="Texture2D" uid="uid://bqp4red882dfg" path="res://Chest.png" id="6_xinky"]
+[ext_resource type="Texture2D" uid="uid://h8tn8nd1au8v" path="res://Sconce.png" id="7_tcjlt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btcbx"]
+size = Vector2(638.954, 61.6729)
+
+[node name="Scene" type="Node"]
+
+[node name="lobby" type="Node2D" parent="."]
+position = Vector2(2, 154)
+
+[node name="Background" type="TextureRect" parent="lobby"]
+offset_left = -1046.0
+offset_top = -111.0
+offset_right = 1426.0
+offset_bottom = 735.0
+texture = ExtResource("2_0hpoh")
+
+[node name="Door" type="Sprite2D" parent="lobby/Background"]
+position = Vector2(1085, 641)
+scale = Vector2(3.98626, 4.15541)
+texture = ExtResource("4_q7pyo")
+offset = Vector2(20, -26)
+
+[node name="Door2" type="Sprite2D" parent="lobby/Background"]
+position = Vector2(-50, 534)
+scale = Vector2(3.986, 4.155)
+texture = ExtResource("4_q7pyo")
+
+[node name="Door3" type="Sprite2D" parent="lobby/Background"]
+position = Vector2(2416, 538)
+scale = Vector2(3.986, 4.155)
+texture = ExtResource("4_q7pyo")
+
+[node name="Floor" type="TextureRect" parent="lobby"]
+offset_left = -1011.0
+offset_top = 141.0
+offset_right = -456.0
+offset_bottom = 365.0
+scale = Vector2(4.41209, 2.14865)
+texture = ExtResource("3_krsa8")
+expand_mode = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="lobby/Floor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lobby/Floor/StaticBody2D"]
+light_mask = 3
+position = Vector2(281.046, 214.088)
+shape = SubResource("RectangleShape2D_btcbx")
+
+[node name="Player" parent="lobby" instance=ExtResource("1_qk64j")]
+position = Vector2(158, 489)
+scale = Vector2(2, 2)
+collision_layer = 3
+
+[node name="Window" type="Sprite2D" parent="lobby"]
+position = Vector2(76, 299)
+scale = Vector2(5.11882, 4.80236)
+texture = ExtResource("5_eof5v")
+
+[node name="Window2" type="Sprite2D" parent="lobby"]
+position = Vector2(712, 299)
+scale = Vector2(4.931, 4.802)
+texture = ExtResource("5_eof5v")
+
+[node name="Chest" type="Sprite2D" parent="lobby"]
+position = Vector2(-545, 429)
+scale = Vector2(2.096, 2.096)
+texture = ExtResource("6_xinky")
+
+[node name="Chest2" type="Sprite2D" parent="lobby"]
+position = Vector2(796, 433)
+scale = Vector2(2.096, 2.096)
+texture = ExtResource("6_xinky")
+
+[node name="Window3" type="Sprite2D" parent="lobby"]
+position = Vector2(1301, 299)
+scale = Vector2(4.802, 4.802)
+texture = ExtResource("5_eof5v")
+
+[node name="Window4" type="Sprite2D" parent="lobby"]
+position = Vector2(-567, 299)
+scale = Vector2(5.119, 4.802)
+texture = ExtResource("5_eof5v")
+
+[node name="Sconce" type="Sprite2D" parent="lobby"]
+position = Vector2(25.1619, 439.838)
+rotation = 1.5708
+scale = Vector2(7.97436, 5.5444)
+texture = ExtResource("7_tcjlt")
