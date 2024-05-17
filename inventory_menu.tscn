@@ -1,0 +1,192 @@
+[gd_scene load_steps=13 format=3 uid="uid://bi5bu50hhvwdi"]
+
+[ext_resource type="Script" path="res://gui/inventory_menu.gd" id="1_6su15"]
+[ext_resource type="FontFile" uid="uid://wqrno8lackrm" path="res://gui/kenney_mini_square.ttf" id="2_j4fwc"]
+[ext_resource type="Texture2D" uid="uid://o0mx21qrydly" path="res://level/props/Note.webp" id="3_qryu4"]
+[ext_resource type="Script" path="res://gui/noteLabel.gd" id="4_63jgu"]
+
+[sub_resource type="Gradient" id="Gradient_da484"]
+offsets = PackedFloat32Array(0.727829, 0.996942)
+colors = PackedColorArray(1, 0.996078, 0.682353, 1, 0.992157, 0.94902, 0.47451, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jdcna"]
+gradient = SubResource("Gradient_da484")
+width = 300
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3fwlu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l3ftv"]
+line_spacing = 4.0
+font = ExtResource("2_j4fwc")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(1, 1, 1, 0)
+shadow_size = 11
+
+[sub_resource type="Gradient" id="Gradient_uk3ci"]
+offsets = PackedFloat32Array(0, 0.287462)
+colors = PackedColorArray(0.992157, 0.94902, 0.47451, 1, 1, 0.996078, 0.682353, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ec7vf"]
+gradient = SubResource("Gradient_uk3ci")
+width = 300
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_p8owf"]
+resource_name = "Vocab"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ubu6t"]
+
+[node name="InventoryMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6su15")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 19.525
+anchor_bottom = 12.75
+offset_right = 18.9999
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.533333)
+
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 82.0
+offset_top = 47.0
+offset_right = 82.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/CenterContainer"]
+custom_minimum_size = Vector2(800, 480)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture1D_jdcna")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/CenterContainer/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.997
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 19.0
+offset_right = -13.1
+offset_bottom = -6.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer/HBoxContainer/TextureRect/ScrollContainer"]
+custom_minimum_size = Vector2(250, 2.08165e-12)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/CenterContainer/HBoxContainer/TextureRect/ScrollContainer/VBoxContainer"]
+material = SubResource("CanvasItemMaterial_3fwlu")
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="ColorRect/CenterContainer/HBoxContainer/TextureRect/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_qryu4")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/CenterContainer/HBoxContainer/TextureRect/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Entryway"
+label_settings = SubResource("LabelSettings_l3ftv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect/CenterContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("GradientTexture1D_ec7vf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer/HBoxContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = -18.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/CenterContainer/HBoxContainer/TextureRect2/VBoxContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 130)
+layout_mode = 2
+color = Color(0.227451, 0.129412, 0.0862745, 1)
+
+[node name="HFlowContainer" type="HFlowContainer" parent="ColorRect/CenterContainer/HBoxContainer/TextureRect2/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.996
+anchor_bottom = 0.99
+offset_left = 3.0
+offset_top = 2.0
+offset_right = -1.94401
+offset_bottom = -0.700009
+
+[node name="ResumeButton" type="Button" parent="ColorRect/CenterContainer/HBoxContainer/TextureRect2/VBoxContainer/ColorRect/HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+action_mode = 0
+button_group = SubResource("ButtonGroup_p8owf")
+text = "Wisdom"
+icon = SubResource("ViewportTexture_ubu6t")
+alignment = 0
+
+[node name="ResumeButton2" type="Button" parent="ColorRect/CenterContainer/HBoxContainer/TextureRect2/VBoxContainer/ColorRect/HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+action_mode = 0
+text = "Xanath"
+icon = SubResource("ViewportTexture_ubu6t")
+alignment = 0
+
+[node name="ResumeButton3" type="Button" parent="ColorRect/CenterContainer/HBoxContainer/TextureRect2/VBoxContainer/ColorRect/HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+action_mode = 0
+button_group = SubResource("ButtonGroup_p8owf")
+text = "Power"
+icon = SubResource("ViewportTexture_ubu6t")
+alignment = 0
+
+[node name="ResumeButton4" type="Button" parent="ColorRect/CenterContainer/HBoxContainer/TextureRect2/VBoxContainer/ColorRect/HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+action_mode = 0
+button_group = SubResource("ButtonGroup_p8owf")
+text = "Rey"
+icon = SubResource("ViewportTexture_ubu6t")
+alignment = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/CenterContainer/HBoxContainer/TextureRect2/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size={12}][color=black]Dear Xanath,
+	I am [color=brown]%s[/color], writing to you to request your assistance in my magical tutelage. I have heard tales of your great magical prowess told throughout my home village enough to carefully learn the location of your deep seclusion in hopes of seeking out your assistance. While I may not have the magic coursing through me, I promise you that I am quite serious about pursuing the craft of incantation and spellcasting. I understand that this is a considerable ask for a wizard of your renown and I can only wish that you will pass along your breadth of magical knowledge to me in kind by allowing me to be your student.
+	Hopefully, Rey"
+fit_content = true
+tab_size = 5
+script = ExtResource("4_63jgu")
+
+[connection signal="pressed" from="ColorRect/CenterContainer/HBoxContainer/TextureRect2/VBoxContainer/ColorRect/HFlowContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="meta_clicked" from="ColorRect/CenterContainer/HBoxContainer/TextureRect2/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
